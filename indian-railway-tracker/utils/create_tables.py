@@ -83,25 +83,21 @@ if __name__ == "__main__":
     DB_URL = "postgresql://postgres:iaCkmHPhuyhFLEBDGdwxQGGqlHvdgWJA@yamanote.proxy.rlwy.net:29855/railway"
 
     columns_metadata = [
-        {"name": "train_no", "type": "String", "length": 20, "nullable": True,  "primary_key": True, "nullable": False},
-        {"name": "arrival_time", "type": "String", "length": 100, "nullable": True},
-        {"name": "delay", "type": "Integer", "nullable": True},
-        #  "foreign_key": "stations.station_code"},
-        # {"name": "dstn_stn_code", "type": "String", "length": 10, "nullable": True,
-        #  "foreign_key": "stations.station_code"},
-        {"name": "departure_time", "type": "String", "length": 10, "nullable": True},
-        {"name": "station_code", "type": "String", "length": 10, "nullable": True},
-        # {"name": "travel_time", "type": "String", "length": 20, "nullable": True},
-        # {"name": "running_days", "type": "array", "nullable": True},
-        # {"name": "distance", "type": "String", "length": 20, "nullable": True},
-        # {"name": "halts", "type": "Integer", "nullable": True},
-        # {"name": "live_status", "type": "String", "length": 20, "nullable": True}
+        {"name": "district", "type": "String", "length": 255, "nullable": True},
+        {"name": "division", "type": "String", "length": 255, "nullable": True},
+        {"name": "new_station_category", "type": "String", "length": 50, "nullable": True},
+        {"name": "old_station_category", "type": "String", "length": 50, "nullable": True},
+        {"name": "state", "type": "String", "length": 100, "nullable": True},
+        {"name": "station_code", "type": "String", "length": 10, "nullable": False, "primary_key": True},
+        {"name": "station_name", "type": "String", "length": 255, "nullable": True},
+        {"name": "zone", "type": "String", "length": 10, "nullable": True}
     ]
 
     indexes_metadata = [
-        {"name": "idx_train_no", "columns": ["train_no"]},
-        {"name": "idx_source_stn_code", "columns": ["source_stn_code"]},
-        {"name": "idx_dstn_stn_code", "columns": ["dstn_stn_code"]},
+        {"name": "idx_station_code", "columns": ["station_code"]},
+        {"name": "idx_division", "columns": ["division"]},
+        {"name": "idx_state", "columns": ["state"]},
+        {"name": "idx_station_name", "columns": ["station_name"]},
     ]
 
-    create_table_dynamic(DB_URL, "trains", columns_metadata, indexes_metadata)
+    create_table_dynamic(DB_URL, "stations", columns_metadata, indexes_metadata)

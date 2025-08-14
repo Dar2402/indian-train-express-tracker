@@ -173,6 +173,9 @@ async function parseTrainData(data) {
       return minutesA - minutesB;
     });
 
+
+    console.log(arr)
+
     return {
       success: true,
       time_stamp: Date.now(),

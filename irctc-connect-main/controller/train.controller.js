@@ -229,6 +229,7 @@ const trackTrain = async (req, res) => {
     }
 
     const data = await response.json();
+    console.log("data", data)
     if (!data) {
       return {
         success: false,
