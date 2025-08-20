@@ -75,7 +75,7 @@ def track_train(train_number: str, date_str: str):
         "Content-Type": "application/json",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
     }
-    payload = {"trainNumber": train_number, "dates": date_str}
+    payload = {"trainNumber": train_number, "dates": [date_str, "18-08-2025"]}
 
     try:
         response = requests.post(url, json=payload, headers=headers, timeout=30)
@@ -89,6 +89,6 @@ def track_train(train_number: str, date_str: str):
 
 if __name__ == "__main__":
     date_str_api = datetime.now().strftime("%d-%m-%Y")
-    live_status = track_train("15319", date_str_api)
+    live_status = track_train("56142", date_str_api)
 
     print(live_status)
