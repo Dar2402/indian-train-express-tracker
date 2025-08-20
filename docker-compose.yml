@@ -99,6 +99,40 @@ services:
     networks:
       - e_railway_live_status_network
 
+  postgres:
+    image: postgres:16
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: iaCkmHPhuyhFLEBDGdwxQGGqlHvdgWJA
+      POSTGRES_DB: railway
+    volumes:
+      - ./db_backups/backup.sql:/docker-entrypoint-initdb.d/backup.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - e_railway_live_status_network
+
+  superset:
+    image: apache/superset:3.0.0
+    container_name: indian-express-tracker_superset
+    environment:
+      SUPERSET_DATABASE_URI: postgresql://postgres:iaCkmHPhuyhFLEBDGdwxQGGqlHvdgWJA@postgres:5432/railway
+      SUPERSET_CONFIG_PATH: /etc/superset/superset_config.py
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "8088:8088"
+    volumes:
+      - superset_home:/app/superset_home
+      - ./config:/etc/superset
+    command: [ "/bin/sh", "-c", "sleep 10 && superset db upgrade && superset init && superset run -h 0.0.0.0 -p 8088 --with-threads --reload --debugger" ]
+
+    networks:
+      - e_railway_live_status_network
+
+
   irctc-connect-main:
     build:
       context: ./irctc-connect-main
@@ -124,6 +158,7 @@ volumes:
   hadoop_namenode:
   hadoop_datanode:
   irctc_data:
+  superset_home:
 
 networks:
   e_railway_live_status_network:

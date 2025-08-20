@@ -45,3 +45,100 @@ coverage/
 
 */.idea/*
 .venv/
+
+
+# ======================
+# Node.js
+# ======================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+
+# ======================
+# Python
+# ======================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+*.manifest
+*.spec
+.eggs/
+.venv/
+venv/
+ENV/
+env/
+pip-wheel-metadata/
+.pytest_cache/
+.mypy_cache/
+.dmypy.json
+.pyre/
+.coverage
+coverage/
+htmlcov/
+.pytest_cache/
+.ipynb_checkpoints/
+
+
+
+# ======================
+# Environment variables
+# ======================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ======================
+# Build / dist artifacts
+# ======================
+dist/
+build/
+*.tgz
+*.zip
+*.tar
+*.gz
+*.bak
+*.swp
+*.tmp
+*.temp
+
+# ======================
+# IDE / OS specific
+# ======================
+.DS_Store
+.idea/
+.vscode/
+*/.idea/*
+
+
+# ======================
+# Logs
+# ======================
+logs/
+*.log
+*.out
+*.err
+
+# ======================
+# Jupyter Notebook checkpoints
+# ======================
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+notebooks/daily*.ipynb
+
+
+# ======================
+# Docker volumes / Runtime data
+# ======================
+postgres_data/*
+kafka_data/*
+zookeeper_data/*
+zookeeper_log/*
+
